@@ -1,14 +1,10 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.7.0
+  maven: cloudesire/maven@0.1.2
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: '10.4'
+    docker:
+      - image: cimg/openjdk:17.0.1
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-      - run: npm run test
+      - run: java --version
